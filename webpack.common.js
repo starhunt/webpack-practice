@@ -44,7 +44,13 @@ module.exports = {
           {
             loader: "file-loader",
             options: {
-              name: "[contenthash].[ext]",
+              //   name: "[contenthash].[ext]",
+              name() {
+                if (!isProduction) {
+                  return "[path][name].[ext]";
+                }
+                return "[contenthash].[ext]";
+              },
               publicPath: "assets/",
               outputPath: "assets/"
             }

@@ -2,7 +2,7 @@ import "normalize.css";
 // import "./index.css";
 import styles from "./index.css";
 import $ from "jquery";
-import slackImg from "./assets/slack.jpg";
+import slackImg from "./images/slack.jpg";
 
 function component() {
   const element = document.createElement("div");
