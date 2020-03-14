@@ -2,11 +2,13 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserWebpackPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   entry: "./index.js",
   output: {
-    filename: "bundle.[hash].js", // hash conenthash chunkhash
+    filename: "[name].[chunkhash].js", // hash conenthash chunkhash
     path: path.resolve(__dirname, "dist")
   },
   module: {
@@ -41,15 +43,47 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[contenthash].css"
     }),
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.css$/g,
+      cssProcessor: require("cssnano"),
+      cssProcessorPluginOptions: {
+        preset: ["default", { discardComments: { removeAll: true } }]
+      },
+      canPrint: true
+    }),
     new HtmlWebpackPlugin({
       title: "webpack",
       meta: {
         viewport: "width=device-width, initial-scale=1.0"
       },
-      template: "./template.hbs"
+      template: "./template.hbs",
+      minify: {
+        collapseWhitespace: true,
+        useShortDoctype: true,
+        removeScriptTypeAttributes: true
+      }
     }),
     new CleanWebpackPlugin()
   ],
-
+  optimization: {
+    runtimeChunk: {
+      name: "runtime"
+    },
+    splitChunks: {
+      cacheGroups: {
+        common: {
+          test: /[\\/]node_modules[\/]/,
+          name: "venders",
+          chunks: "all"
+        }
+      }
+    },
+    minimize: true,
+    minimizer: [
+      new TerserWebpackPlugin({
+        cache: true
+      })
+    ]
+  },
   mode: "none"
 };
