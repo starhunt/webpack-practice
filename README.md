@@ -30,3 +30,15 @@ npm i webpack-dev-server -D
 
 ./node_modules/.bin/webpack-dev-server --config webpack.dev.js
 dist 출력 폴더와 상관없이 메모리 상에서 처리
+
+historyApiFallback : false/true or rewrites 등의 설정 가능
+historyApiFallback: {
+rewrites: [
+{ from: /^\/subpage$/, to: "subpage.html" },
+{ from: /./, to: "404.html" }
+]
+}
+
+dev server Options
+open
+overlay
