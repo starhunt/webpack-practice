@@ -42,3 +42,12 @@ rewrites: [
 dev server Options
 open
 overlay
+port
+
+이미지 파일 다루기
+npm i file-loader -D
+
+uriloader
+//data:mediatype:base64,data
+
+npm i url-loader -D

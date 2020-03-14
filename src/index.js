@@ -3,13 +3,14 @@ import "normalize.css";
 import styles from "./index.css";
 import $ from "jquery";
 import slackImg from "./images/slack.jpg";
+import slackSvg from "./images/slack.svg";
 
 function component() {
   const element = document.createElement("div");
   element.innerHTML = "Hello WebPack 3";
 
   const imgElement = document.createElement("img");
-  imgElement.src = slackImg;
+  imgElement.src = slackSvg;
 
   console.log(slackImg);
   console.log(styles);
