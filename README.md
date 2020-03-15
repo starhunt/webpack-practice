@@ -51,3 +51,8 @@ uriloader
 //data:mediatype:base64,data
 
 npm i url-loader -D
+
+Saas Loader
+npm i sass-loader node-sass -D
+
+loader는 배열이 큰 값부터 작은 값 순으로 체이닝

@@ -1,6 +1,6 @@
 import "normalize.css";
 // import "./index.css";
-import styles from "./index.css";
+import styles from "./index.module.scss";
 import $ from "jquery";
 import slackImg from "./images/slack.jpg";
 import slackSvg from "./images/slack.svg";

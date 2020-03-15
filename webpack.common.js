@@ -14,23 +14,27 @@ module.exports = {
   },
   module: {
     rules: [
+      // filename.module.scss => css modules, //finename.scss => global
       {
-        test: /\.css$/i,
-        use: [
-          // {
-          //   loader: "style-loader",
-          //   options: {
-          //     injectType: "singletonStyleTag"
-          //   }
-          // },
+        test: /\.s?css$/,
+        oneOf: [
           {
-            loader: MiniCssExtractPlugin.loader
+            test: /\.module\.s?css$/,
+            use: [
+              {
+                loader: MiniCssExtractPlugin.loader
+              },
+              {
+                loader: "css-loader",
+                options: {
+                  modules: true
+                }
+              },
+              "sass-loader"
+            ]
           },
           {
-            loader: "css-loader",
-            options: {
-              modules: true
-            }
+            use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
           }
         ]
       },
