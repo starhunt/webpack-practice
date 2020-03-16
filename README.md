@@ -1,3 +1,16 @@
+mkdir webpack-practice
+cd webpack-practice
+
+npm init -y
+
+npm install webpack webpack-cli --save-dev
+
+npm install style-loader css-loader --save-dev
+
+npm install normalize.css --save-dev
+
+npm i html-webpack-plugin -D
+
 Handlebars 실습
 
 npm i handlebars -D
@@ -56,3 +69,9 @@ Saas Loader
 npm i sass-loader node-sass -D
 
 loader는 배열이 큰 값부터 작은 값 순으로 체이닝
+
+npm i postcss postcss-loader autoprefixer -D
+
+npm i stylelint stylelint-scss stylelint-webpack-plugin stylelint-config-standard -D
+
+npm i @babel/cli @babel/core @babel/preset-env babel-loader -D
